@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Navbar } from "./components/layout/Navbar";
 import { Counter } from "./components/common/counter";
-import ItemListContainer from "./components/pages/ItemListContainer";
+import ItemListContainer from "./components/pages/ItemListContainer/ItemListContainer";
 import CategoryMenu from "./components/common/CategoryMenu";
+import ItemDetailContainer from "./components/pages/ItemDetailContainer/ItemDetailContainer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         style={{ fontSize: "24px" }}
       />
       <CategoryMenu />
+      <ItemDetailContainer />
     </div>
   );
 }
