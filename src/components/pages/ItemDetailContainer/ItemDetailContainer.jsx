@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./ItemDetailContainer.css";
 
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
@@ -18,11 +19,11 @@ const ItemDetailContainer = () => {
   }, []);
 
   if (!item) {
-    return <div>Cargando...</div>;
+    return <div className="loading">Cargando...</div>;
   }
 
   return (
-    <div>
+    <div className="container">
       <h2>{item.name}</h2>
       <p>ID: {item.id}</p>
     </div>

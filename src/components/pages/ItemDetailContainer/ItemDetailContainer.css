@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2em;
+  padding: 2em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.container:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container h2 {
+  color: #333;
+  font-size: 2em;
+}
+
+.container p {
+  color: #666;
+  font-size: 1.2em;
+}
+
+.loading {
+  font-size: 1.5em;
+  color: #999;
+}
