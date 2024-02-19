@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Bali",
+    "desc": "6500 Puffs",
+    "price": 1200,
+    "imageName": "Bali",
+    "extension": "jpg"
+  },
+  {
+    "id": 2,
+    "title": "Chufi",
+    "desc": "8000 Puffs",
+    "price": 1200,
+    "imageName": "Chufi",
+    "extension": "jpg"
+  },
+  {
+    "id": 1,
+    "title": "Elfworld",
+    "desc": "12000 Puffs",
+    "price": 1400,
+    "imageName": "Elfworld",
+    "extension": "jpg"
+  }
+]
