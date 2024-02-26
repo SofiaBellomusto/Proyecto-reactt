@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ProductCard from '../../common/ProductCard.jsx';
+import ProductCard from '../../common/ProductCard/productCard';
 import Grid from '@mui/material/Grid';
 import './ItemListContainer.css';
 

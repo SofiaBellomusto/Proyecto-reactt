@@ -1,41 +1,46 @@
-/* ItemDetailContainer.css */
 .item-detail-container {
-  display: flex; /* Arrange image and info side-by-side */
-  justify-content: space-around; /* Distribute space nicely */
-  align-items: center;  /* Vertically center content */
-  margin: 30px auto; /* Center the container with margins */
-  max-width: 900px;  /* Set a maximum width for responsiveness */
+  display: flex; 
+  justify-content: space-around; 
+  align-items: flex-start; 
+  margin: 30px auto;
+  max-width: 900px; 
   padding: 20px;
   border-radius: 8px;
-  background-color: #ffe8f0; /* Soft pink background */
+  background-color: #ffe8f0; 
 }
 
 .item-image {
-  flex: 1; /* Allow image to take up available space */
-  margin-right: 20px;
+  flex: 1; 
+  margin-right: 30px; 
 }
 
 .item-image img {
   max-width: 100%; 
+  height: auto;
   border-radius: 10px;
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .item-info {
-  flex: 2; /* Info section takes up slightly more space */
+  flex: 1.5; 
 }
 
 .item-info h2 {
-  color: #993366; /* A darker shade of pink */
-  font-family: 'Lora', serif; /* A graceful serif font */   
+  color: #993366; 
+  font-family: 'Lora', serif;
+  margin-bottom: 10px; 
 }
 
 .item-info p {
   font-size: 16px;
   line-height: 1.5;
+  margin-bottom: 20px; 
 } 
 
 .item-info h3 {
-  color: #662244; /* A deeper color for the price */
+  color: #662244; 
   font-weight: 600; 
+  margin-bottom: 15px; 
 }
+
+/* Add more styles below if you want to customize buttons, etc. */
