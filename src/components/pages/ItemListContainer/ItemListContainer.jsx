@@ -4,6 +4,7 @@ import ProductCard from '../../common/ProductCard/productCard';
 import Grid from '@mui/material/Grid';
 import './ItemListContainer.css';
 
+
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
@@ -16,10 +17,8 @@ const ItemListContainer = () => {
 
   const filteredProducts = products.filter(product => {
     if (category && category != 'todos') { 
-      // If a category is specified, filter accordingly
       return product.category === category; 
     } else {
-      // If no category, return all products
       return true; 
     }
   });

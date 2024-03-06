@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { BsFillCartCheckFill } from "react-icons/bs";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-
-
 export const CartWidget = () => {
     return (
-        <div>
-            <span>4</span>
+        <Link to="/cart">
+            <Badge badgeContent={0} showZero color="primary">
+                <BsFillCartCheckFill size="30px" color="beige" />
+            </Badge>
             <ShoppingCartIcon/>
-        </div>
+        </Link>
     );
 }
+

@@ -3,10 +3,12 @@ import { Navbar } from "../src/components/layout/Navbar/Navbar";
 import { Counter } from "./components/common/counter";
 import ItemListContainer from "./components/pages/ItemListContainer/ItemListContainer";
 import ItemDetailContainer from "./components/pages/ItemDetailContainer/ItemDetailContainer";
+import CartContextProvider from "./Context/CartContext";
 
 function App() {
   return (
     <BrowserRouter>
+      <CartContextProvider>
       <div>
         <Navbar />
         <Routes> 
@@ -16,6 +18,7 @@ function App() {
         </Routes>
         <Counter />
       </div>
+      </CartContextProvider>
     </BrowserRouter>
   );
 }
