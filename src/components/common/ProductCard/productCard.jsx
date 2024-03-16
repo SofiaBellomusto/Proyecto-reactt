@@ -9,14 +9,14 @@ import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
 import PaidOutlined from "@mui/icons-material/PaidOutlined";
 
-const ProductCard = ({ id,key, title, desc, price, img, extension }) => {
+const ProductCard = ({ id, title, desc, price, img, extension }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}> {/* Container Card for consistency */}
+    <Card sx={{ maxWidth: 345 }}>
       <Link to={`/item/${id}`}> 
         <CardMedia
           sx={{ height: 140 }}
           image={`../../../assets/${img}.${extension}`}
-          title={title} // Use the actual title property
+          title={title} 
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -25,7 +25,7 @@ const ProductCard = ({ id,key, title, desc, price, img, extension }) => {
           <Typography variant="body2" color="text.secondary">
             {desc}
           </Typography>
-          <Chip icon={<PaidOutlined />} label={`$${price}`} variant="outlined" /> {/* Add $ for currency */}
+          <Chip icon={<PaidOutlined />} label={`$${price}`} variant="outlined" /> 
         </CardContent>
       </Link>
       <CardActions>
