@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import './ItemDetailContainer.css';
+import './ItemDetail.css';
+import{collection , doc , getDoc} from "firebase/firestore"
+import { db } from '../../../FirebaseConfig'
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
+  const [item , setItem] = useState(null);
 
   useEffect(() => {
-    fetch("../../../../data/ItemList.json")
-      .then((response) => response.json())
-      .then((products) => {
-        const foundProduct = products.find(item => item.id === productId); 
-        console.log(foundProduct)
-        setProduct(foundProduct);
-      });
+
+    let productsCollection = collection( db, "products" );
+    let refDoc = doc(productsCollection, id)
+    getDoc( refDoc ).then(res=> {
+      setItem( {...res.data(), id: res.id} )
+    }).finaly(()=> setIsLoading(false))
+
   }, [productId]);
 
   if (!product) {
