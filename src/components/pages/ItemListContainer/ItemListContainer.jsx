@@ -3,16 +3,45 @@ import { useParams } from 'react-router-dom';
 import ProductCard from '../../common/ProductCard/productCard';
 import Grid from '@mui/material/Grid';
 import './ItemListContainer.css';
+import { db } from '../../../FirebaseConfig';
+import { collection , getDocs, query, where } from "firebase/firestore"
 
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { category } = useParams();
+  const [isLoading , setIsLoading] = useState(true);
+
 
   useEffect(() => {
-    fetch("../../../../data/ItemList.json")
-      .then((response) => response.json())
-      .then((products) => setProducts(products));
+
+    let productsCollection = collection(db, "products");
+
+      let consulta = productsCollection ;
+
+      if(category){
+        let productsCollectionFiltered = query(
+          productsCollection, 
+          where( "category" , "==" , category )
+          );
+
+        consulta = productsCollectionFiltered;
+        } else{
+          consulta = productsCollection;
+        }
+      
+
+    getDocs(consulta)
+    .then((res) => {
+        let arrayLindo = res.docs.map((elemento, index) => {
+          return { ...elemento.data(), id: elemento.id, key: index };
+        });
+  
+        setProducts(arrayLindo);
+      })
+      .finally(() => setIsLoading(false));
+
+
   }, []);
 
   const filteredProducts = products.filter(product => {
@@ -22,7 +51,6 @@ const ItemListContainer = () => {
       return true; 
     }
   });
-
 
 
   return (
@@ -44,5 +72,6 @@ const ItemListContainer = () => {
     </Grid>
   );
 };
+
 
 export default ItemListContainer;
