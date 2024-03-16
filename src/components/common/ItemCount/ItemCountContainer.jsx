@@ -1,14 +1,50 @@
+// import { useState } from "react";
+// import ItemCount from "./ItemCount";
+
+// const ItemCountContainer = ({ stock }) => {
+//   const [counter, setCounter] = useState(1);
+
+//   const addOne = () => {
+//     if (counter < stock) {
+//       setCounter(counter + 1);
+//     } else {
+//       alert("stock maximo");
+//     }
+//   };
+
+//   const subOne = () => {
+//     if (counter > 1) {
+//       setCounter(counter - 1);
+//     } else {
+//       alert("no puede ser menos de 1");
+//     }
+//   };
+
+//   return <ItemCount counter={counter} addOne={addOne} subOne={subOne} />;
+// };
+
+// export default ItemCountContainer;
+
 import { useState } from "react";
 import ItemCount from "./ItemCount";
 
-const ItemCountContainer = ({ stock }) => {
-  const [counter, setCounter] = useState(1);
+import Swal from 'sweetalert2'
+
+const ItemCountContainer = ({ stock, onAdd, initial=1 }) => {
+
+  const [counter, setCounter] = useState( initial );
 
   const addOne = () => {
     if (counter < stock) {
       setCounter(counter + 1);
     } else {
-      alert("stock maximo");
+      Swal.fire({
+        icon: "warning",
+        title: "Maximo",
+        text: "No hay mas unidades en stock",
+        showConfirmButton: false
+      });
+
     }
   };
 
@@ -20,7 +56,7 @@ const ItemCountContainer = ({ stock }) => {
     }
   };
 
-  return <ItemCount counter={counter} addOne={addOne} subOne={subOne} />;
+  return <ItemCount counter={counter} addOne={addOne} subOne={subOne} onAdd={onAdd} />;
 };
 
 export default ItemCountContainer;
