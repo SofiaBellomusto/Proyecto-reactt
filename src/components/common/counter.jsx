@@ -3,7 +3,6 @@ import { useState } from "react";
 export const Counter = () => {
   const [counter, funcionDelCounter] = useState(0); // [variable, funcion]
 
-  // console.log(x[0])
   const sumar = () => {
     funcionDelCounter(counter + 1);
   };

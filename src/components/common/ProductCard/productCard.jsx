@@ -12,7 +12,6 @@ import PaidOutlined from "@mui/icons-material/PaidOutlined";
 const ProductCard = ({ id, title, desc, price, img, extension }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <Link to={`/item/${id}`}> 
         <CardMedia
           sx={{ height: 140 }}
           image={`../../../assets/${img}.${extension}`}
@@ -27,9 +26,10 @@ const ProductCard = ({ id, title, desc, price, img, extension }) => {
           </Typography>
           <Chip icon={<PaidOutlined />} label={`$${price}`} variant="outlined" /> 
         </CardContent>
-      </Link>
-      <CardActions>
-        <Button size="small">Ver mas</Button>
+     
+      <CardActions>      <Link to={`/item/${id}`}> 
+
+        <Button size="small">Ver mas</Button> </Link>
         <Button size="small">Agregar al carrito</Button>
       </CardActions>
     </Card>

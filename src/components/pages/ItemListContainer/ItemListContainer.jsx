@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import './ItemListContainer.css';
 import { db } from '../../../FirebaseConfig';
 import { collection , getDocs, query, where } from "firebase/firestore"
+import { CardSkeleton } from "../../common/CardSkeleton";
 
 
 const ItemListContainer = () => {
@@ -16,33 +17,49 @@ const ItemListContainer = () => {
   useEffect(() => {
 
     let productsCollection = collection(db, "products");
-
-      let consulta = productsCollection ;
-
-      if(category){
-        let productsCollectionFiltered = query(
-          productsCollection, 
-          where( "category" , "==" , category )
-          );
-
-        consulta = productsCollectionFiltered;
-        } else{
-          consulta = productsCollection;
-        }
-      
-
+    
+    let consulta = productsCollection;
+    
+    if(category && category !== "todos"){
+      let productsCollectionFiltered = query(
+        productsCollection, 
+        where( "category" , "==" , category )
+      );
+    
+      consulta = productsCollectionFiltered;
+    } else{
+      consulta = productsCollection;
+    }
+    
     getDocs(consulta)
     .then((res) => {
-        let arrayLindo = res.docs.map((elemento, index) => {
-          return { ...elemento.data(), id: elemento.id, key: index };
-        });
-  
-        setProducts(arrayLindo);
-      })
-      .finally(() => setIsLoading(false));
+      let arrayLindo = res.docs.map((elemento, index) => {
+        return { ...elemento.data(), id: elemento.id, key: index };
+      });
+    
+      setProducts(arrayLindo);
+    })
+    .finally(() => setIsLoading(false));
+    
+    }, [category]);
+    
 
-
-  }, []);
+  if (isLoading) {
+    return (
+      <div className="cards-container">
+        {category ? (
+          <>
+            <CardSkeleton />
+          </>
+        ) : (
+          <>
+            <CardSkeleton />
+            <CardSkeleton />
+          </>
+        )}
+      </div>
+    );
+  }
 
   const filteredProducts = products.filter(product => {
     if (category && category != 'todos') { 

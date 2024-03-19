@@ -1,4 +1,4 @@
-import ProductCard from "../../common/ProductCard/productCard";
+import { ProductCard } from "../../common/ProductCard";
 import "./ItemListContainer.css"
 const ItemList = ({ products }) => {
   return (

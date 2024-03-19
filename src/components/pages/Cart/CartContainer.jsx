@@ -66,11 +66,11 @@ export const CartContainer = () => {
             </div>
           ) : (
             <Link to="/">
-              <Button variant="contained">Agrega productos</Button>
+              <Button variant="contained">Agregar productos</Button>
             </Link>
           )}
 
-          <h1>El total del carrito es ${total}</h1>
+          <h1>TOTAL ${total}</h1>
         </div>
       </div>
     </div>
