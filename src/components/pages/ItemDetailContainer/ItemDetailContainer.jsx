@@ -1,21 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemDetail.css';
-import{collection , doc , getDoc} from "firebase/firestore"
-import { db } from '../../../FirebaseConfig'
+import { db } from '../../../FirebaseConfig';
+import { collection , getDocs, query, where } from "firebase/firestore"
 
 const ItemDetailContainer = () => {
+
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
-  const [item , setItem] = useState(null);
 
   useEffect(() => {
 
     let productsCollection = collection( db, "products" );
-    let refDoc = doc(productsCollection, id)
-    getDoc( refDoc ).then(res=> {
-      setItem( {...res.data(), id: res.id} )
-    }).finaly(()=> setIsLoading(false))
+    let consulta = productsCollection ;
+
+    if(productId){
+      let productsCollectionFiltered = query(
+        productsCollection, 
+        where( "id" , "==" , productId )
+        );
+
+      consulta = productsCollectionFiltered;
+    } else{
+      consulta = productsCollection;
+    }
+
+    getDocs( consulta )
+    .then((res) => {
+      let arrayLindo = res.docs.map((elemento, index) => {
+        return { ...elemento.data(), id: elemento.id, key: index };
+      });
+
+      // Aquí, toma el primer elemento del array
+      setProduct(arrayLindo[0]);
+      
+    })
+    .finally(() => console.log('finish'));
 
   }, [productId]);
 
