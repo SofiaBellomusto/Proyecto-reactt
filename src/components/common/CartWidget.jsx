@@ -9,7 +9,6 @@ export const CartWidget = () => {
             <Badge badgeContent={0} showZero color="primary">
                 <BsFillCartCheckFill size="30px" color="beige" />
             </Badge>
-            <ShoppingCartIcon/>
         </Link>
     );
 }
