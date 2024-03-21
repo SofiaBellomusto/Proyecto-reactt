@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import './ItemDetail.css';
 import { db } from '../../../FirebaseConfig';
 import { collection , getDocs, query, where } from "firebase/firestore"
+import { CartContext } from '../../../context/CartContext';
 
 const ItemDetailContainer = () => {
 
   const [product, setProduct] = useState(null);
   const { productId } = useParams();
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
 
@@ -52,6 +54,7 @@ const ItemDetailContainer = () => {
         <h2>{product.title}</h2>
         <p>{product.desc}</p>
         <h3>Price: ${product.price}</h3>
+        <button onClick={() => addToCart(product)}>Agregar al carrito</button>
       </div>
     </div>
   );
