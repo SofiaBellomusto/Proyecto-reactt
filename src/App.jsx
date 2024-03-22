@@ -1,8 +1,8 @@
 import { BrowserRouter } from "react-router-dom";
-import CartContextProvider from "./context/CartContext";
+import CartContextProvider from "./Context/CartContextProvider";
 import { AppRouter } from "./components/Router/AppRouter";
 import { useContext } from 'react';
-import { CartContext } from './context/CartContext';
+
 
 function MiComponente() {
   const { cart, addToCart, ...otros } = useContext(CartContext);

@@ -1,7 +1,7 @@
 import { Button } from "@mui/material";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { CartContext } from "../../../context/CartContext";
+import { CartContext } from "../../../Context/CartContextProvider";
 import Swal from "sweetalert2";
 import "./Cart.css"
 
@@ -36,7 +36,7 @@ export const CartContainer = () => {
           {cart.map((item) => {
             return (
               <div key={item.id} className="cart-item">
-                <img src={item.img} alt="" />
+                <img src={`../../../assets/${item.imageName}.${item.extension}`} alt={item.title} />
                 <div className="cart-item-info">
                   <h2>{item.name}</h2>
                   <h2>${item.price}.-</h2>
@@ -50,11 +50,6 @@ export const CartContainer = () => {
           })}
         </div>
         <div className="cart-info">
-          <h2>Descripcion del carrito:</h2>
-          <h3>Cantidad de productos: </h3>
-          <h3>Precio total: {total}</h3>
-          <h3>Descuento: </h3>
-          <h3>Precio final: </h3>
           {cart.length > 0 ? (
             <div className="btn-cart">
               <Button onClick={limpiarConAlerta} variant="contained">

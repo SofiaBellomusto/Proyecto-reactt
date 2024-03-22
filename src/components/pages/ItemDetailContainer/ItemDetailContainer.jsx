@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 import './ItemDetail.css';
 import { db } from '../../../FirebaseConfig';
 import { collection , getDocs, query, where } from "firebase/firestore"
-import { CartContext } from '../../../context/CartContext';
+import { CartContext } from '../../../Context/CartContextProvider';
 
 const ItemDetailContainer = () => {
 
   const [product, setProduct] = useState(null);
+  const [quantity, setQuantity] = useState(1); // Initial quantity is 1
   const { productId } = useParams();
   const { addToCart } = useContext(CartContext);
 
@@ -54,7 +55,14 @@ const ItemDetailContainer = () => {
         <h2>{product.title}</h2>
         <p>{product.desc}</p>
         <h3>Price: ${product.price}</h3>
-        <button onClick={() => addToCart(product)}>Agregar al carrito</button>
+
+        <div className="quantity-control">
+  <button onClick={() => setQuantity(Math.max(quantity - 1, 1))}>-</button> 
+  <input type="number" value={quantity} readOnly /> 
+  <button onClick={() => setQuantity(quantity + 1)}>+</button> 
+</div>
+
+        <button onClick={() => addToCart(product, quantity)}>Agregar al carrito</button>
       </div>
     </div>
   );
