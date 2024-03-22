@@ -30,7 +30,6 @@ const ProductCard = ({ id, title, desc, price, img, extension }) => {
       <CardActions>      <Link to={`/item/${id}`}> 
 
         <Button size="small">Ver mas</Button> </Link>
-        <Button size="small">Agregar al carrito</Button>
       </CardActions>
     </Card>
   );
