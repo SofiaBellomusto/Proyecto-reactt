@@ -17,9 +17,7 @@ product.quantity = quantity;
           quantity: elemento.quantity + product.quantity,
         };
       } else {
-        return {
-          elemento
-        };
+        return elemento;
       }
     });
 
