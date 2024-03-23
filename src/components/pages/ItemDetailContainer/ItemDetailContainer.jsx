@@ -5,6 +5,11 @@ import { db } from '../../../FirebaseConfig';
 import { collection , getDocs, query, where } from "firebase/firestore"
 import { CartContext } from '../../../Context/CartContextProvider';
 import { CardSkeleton } from '../../common/CardSkeleton';
+import Button from "@mui/material/Button";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import TextField from '@mui/material/TextField';
 
 const ItemDetailContainer = () => {
 
@@ -60,12 +65,46 @@ const ItemDetailContainer = () => {
         <h3>Price: ${product.price}</h3>
 
         <div className="quantity-control">
-  <button onClick={() => setQuantity(Math.max(quantity - 1, 1))}>-</button> 
+  {/* <button onClick={() => setQuantity(Math.max(quantity - 1, 1))}>-</button> 
   <input type="number" value={quantity} readOnly /> 
-  <button onClick={() => setQuantity(quantity + 1)}>+</button> 
-</div>
+  <button onClick={() => setQuantity(quantity + 1)}>+</button>  */}
 
-        <button onClick={() => addToCart(product, quantity)}>Agregar al carrito</button>
+<div className="quantity-control" style={{ display: 'flex', alignItems: 'center', marginBottom: '15px' }}>
+          <Button 
+            sx={{ 
+              height: '56px' 
+            }}
+            variant="outlined" 
+            onClick={() => setQuantity(Math.max(quantity - 1, 1))}
+            style={{ marginRight: '5px' }}
+          >
+            <RemoveIcon />
+          </Button> 
+          <TextField
+  type="number"
+  value={quantity}/>
+          <Button 
+            sx={{ 
+              height: '56px' 
+            }}
+            variant="outlined" 
+            onClick={() => setQuantity(quantity + 1)}
+            style={{ marginLeft: '5px' }}
+          >
+            <AddIcon />
+          </Button> 
+        </div>
+
+        <Button 
+          sx={{ 
+            height: '56px' 
+          }}
+          variant="contained" 
+          onClick={() => addToCart(product, quantity)}
+          endIcon={<ShoppingCartIcon />}
+        > Agregar al carrito </Button>
+
+</div>
       </div>
     </div>
   );

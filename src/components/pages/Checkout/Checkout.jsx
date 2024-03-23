@@ -1,4 +1,8 @@
+import {ShoppingCartCheckoutRounded } from "@mui/icons-material";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
 
 export const Checkout = ({ envioDeFormulario, capturar, orderId }) => {
   return (
@@ -10,28 +14,32 @@ export const Checkout = ({ envioDeFormulario, capturar, orderId }) => {
        </div>
       ) : (
         <form onSubmit={envioDeFormulario}>
-          <input
-            type="text"
-            placeholder="Ingresa tu nombre"
-            onChange={capturar}
-            name="name"
+
+        <TextField
+          required
+          id="outlined-required"
+          defaultValue="Nombre"
+          name="name"
           />
 
-          <input
-            type="text"
-            placeholder="Ingresa tu telefono"
-            onChange={capturar}
-            name="phone"
+        <TextField
+          required
+          id="outlined-required"
+          defaultValue="Numero de telefono"
+          name="phone"
           />
 
-          <input
-            type="text"
-            placeholder="Ingresa tu email"
-            onChange={capturar}
-            name="email"
-          />
+        <TextField
+        required
+        id="outlined-required"
+        defaultValue="Email"
+        name="email"
+        />
 
-          <button type="submit">Comprar</button>
+          <Button sx={{ 
+              height: '56px' 
+            }} variant="contained" type="submit" endIcon={<ShoppingCartCheckoutRounded />}> Proceder al pago </Button>
+
         </form>
       )}
     </div>
