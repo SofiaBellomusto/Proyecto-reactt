@@ -16,15 +16,15 @@ export const CartContainer = () => {
       title: "Limpiar el carrito?",
       showDenyButton: true,
       showCancelButton: false,
-      confirmButtonText: "Si, limpiar",
-      denyButtonText: `No`,
+      confirmButtonText: "Limpiar",
+      denyButtonText: `Cancelar`,
     }).then((result) => {
 
       if (result.isConfirmed) {
         clearCart()
         Swal.fire("Eliminado", "", "success");
       } else if (result.isDenied) {
-        Swal.fire("El carrito queda como estaba", "", "info");
+        Swal.fire("No se realizaron cambios", "", "info");
       }
     });
   };

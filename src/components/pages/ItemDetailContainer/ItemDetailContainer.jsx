@@ -4,6 +4,7 @@ import './ItemDetail.css';
 import { db } from '../../../FirebaseConfig';
 import { collection , getDocs, query, where } from "firebase/firestore"
 import { CartContext } from '../../../Context/CartContextProvider';
+import { CardSkeleton } from '../../common/CardSkeleton';
 
 const ItemDetailContainer = () => {
 
@@ -43,7 +44,9 @@ const ItemDetailContainer = () => {
   }, [productId]);
 
   if (!product) {
-    return <div>Loading product details...</div>;
+    return <>
+    <CardSkeleton />
+  </>;
   }
 
   return (
